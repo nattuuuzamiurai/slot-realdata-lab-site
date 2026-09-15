@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nattuuuzamiurai.github.io/slot-realdata-lab-site/sitemap.xml
