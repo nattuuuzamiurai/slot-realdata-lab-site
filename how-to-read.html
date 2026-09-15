@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>実戦データの読み方ガイド｜パチスロ実データ解析ラボ</title>
+<meta name="description" content="スランプグラフの見方や、初当たり・連チャン・差枚数の関係、カタログ値と実戦値の違いの解釈のしかたを一般論として解説。実戦データを正しく読むための基礎知識をまとめたページです。">
+<link rel="canonical" href="https://nattuuuzamiurai.github.io/slot-realdata-lab-site/how-to-read.html">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="パチスロ実データ解析ラボ">
+<meta property="og:title" content="実戦データの読み方ガイド｜パチスロ実データ解析ラボ">
+<meta property="og:description" content="スランプグラフの見方や、初当たり・連チャン・差枚数の関係、カタログ値と実戦値の違いの解釈のしかたを一般論として解説。実戦データを正しく読むための基礎知識をまとめたページです。">
+<meta property="og:url" content="https://nattuuuzamiurai.github.io/slot-realdata-lab-site/how-to-read.html">
+<meta property="og:image" content="https://nattuuuzamiurai.github.io/slot-realdata-lab-site/assets/images/title-banner.png">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="実戦データの読み方ガイド｜パチスロ実データ解析ラボ">
+<meta name="twitter:description" content="スランプグラフの見方や、初当たり・連チャン・差枚数の関係、カタログ値と実戦値の違いの解釈のしかたを一般論として解説。実戦データを正しく読むための基礎知識をまとめたページです。">
+<meta name="twitter:image" content="https://nattuuuzamiurai.github.io/slot-realdata-lab-site/assets/images/title-banner.png">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="notice-page">
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-emoji" aria-hidden="true">🌺</span>
+      <span class="brand-name">パチスロ実データ解析ラボ<small>SLOT REALDATA LAB</small></span>
+    </a>
+    <nav class="site-nav" aria-label="サイト内ナビゲーション">
+      <a href="index.html#articles">記事一覧</a>
+      <a href="glossary.html">用語集</a>
+      <a href="how-to-read.html">読み方ガイド</a>
+      <a href="trust.html">データの信頼性</a>
+      <a href="faq.html">よくある質問</a>
+      <a href="index.html#about">このサイトについて</a>
+      <a href="notice.html">注意事項</a>
+    </nav>
+  </div>
+  <div class="hero container">
+    <span class="hero-badge">読み方ガイド</span>
+    <h1>実戦データの読み方ガイド ― スランプグラフ・初当たり・差枚数の関係を知る</h1>
+  </div>
+  <svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#fdf6e6" d="M0,32 C240,60 480,4 720,20 C960,36 1200,58 1440,26 L1440,60 L0,60 Z"></path>
+  </svg>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container">
+      <a class="back-link" href="index.html">← トップページへ戻る</a>
+
+      <div class="notice-block">
+        <p>各記事で紹介している実戦データを、より正確に読み解くための基礎知識をまとめました。スランプグラフの見方、初当たり・連チャン・差枚数の関係、カタログ値と実戦値の違いの解釈のしかたを、特定の機種に限らない一般論として解説します。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>【一般論】スランプグラフの見方</h2>
+        <p>「スランプグラフ」は、横軸にゲーム数(回転数)、縦軸に差枚数をとって、プレイの推移を折れ線で表したグラフです。パチスロの実戦データを紹介する際によく使われる形式です。</p>
+        <ul>
+          <li>線が右肩上がりに伸びている区間は、当たりが連続して発生し、差枚数が増えている状態を示します。</li>
+          <li>線が横ばい、または右肩下がりで長く続いている区間は、当たりが発生せず「ハマり」の状態が続いていることを示します。</li>
+          <li>グラフ全体の形(山がいくつあるか、谷がどれくらい深く続いたか)を見ることで、その日のプレイがどんな展開だったかを大まかに把握できます。</li>
+        </ul>
+        <p>スランプグラフはあくまで「その1回の記録の結果」を可視化したものです。同じ機種・同じ状況でも、記録するたびに山や谷の位置・大きさは変わります。1枚のグラフだけを見て機種の挙動を決めつけず、複数のデータを積み重ねて傾向を見る意識が大切です。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>【一般論】初当たり・連チャン・差枚数の関係</h2>
+        <p>実戦データを読むうえで混同しやすいのが、「初当たりの早さ」と「最終的な差枚数」の関係です。初当たり(最初の当たり)までのゲーム数が短かったからといって、その後の差枚数が良くなるとは限りません。差枚数を大きく左右するのは、初当たりの早さそのものよりも、そこからどれだけ当たりが連続したか(連チャン数)、より優遇された状態まで進めたかどうか、という後続の展開です。</p>
+        <p>逆に、初当たりまで時間がかかった(いわゆるハマった)場合でも、そこから当たりが連続すれば、差枚数としては十分な結果につながることもあります。「初当たりが早い=いい台」「初当たりが遅い=ダメな台」と単純に結びつけず、その後の展開まで含めて見る視点が必要です。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>【一般論】カタログ値と実戦値の違いをどう解釈すればよいか</h2>
+        <p>実戦データを見ていると、カタログ値(理論値)とズレた数字に出会うことがよくあります。このズレをどう解釈すればよいか、大まかな考え方を整理します。</p>
+        <ul>
+          <li>サンプルサイズ(記録した件数)が小さいうちは、理論値とのズレが大きく出ることは自然に起こり得ます。件数が増えるにつれて、実戦値は理論値に近づいていく傾向があります。</li>
+          <li>ズレの大きさを判断するときは、単純な数字の差だけでなく、信頼区間(振れ幅の目安)も一緒に見ることをおすすめします。信頼区間の中に理論値が含まれているのであれば、「誤差の範囲内」と捉えられる可能性があります。</li>
+          <li>記録の条件(店舗・期間・台数など)が違えば、集まるデータの性質も変わります。異なる条件で取られたデータ同士を単純に比べることには限界があります。</li>
+          <li>数字がズレていること自体を、ただちに「おかしい」と捉える必要はありません。実戦データは、あくまである条件下でのサンプルの一つであることを念頭に置いて読むのが実態に近い受け止め方です。</li>
+        </ul>
+      </div>
+
+      <div class="notice-block">
+        <h2>【一般論】実戦データを読むときの心構え</h2>
+        <ul>
+          <li>紹介されている数字の母数(サンプルサイズ)を確認する習慣をつけると、その数字がどれくらい参考にできるものかの見当がつきやすくなります。</li>
+          <li>「◯◯という条件に絞ったら△△%だった」という形の数字を見たときは、その絞り込みによって比較対象がどう変わっているかにも目を向けると、数字の意味を読み違えにくくなります。</li>
+          <li>特定の1台・1日の結果は、あくまで数ある結果の一つです。全体の傾向として一般化できるかどうかは、複数のデータを踏まえて判断するのが安全です。</li>
+        </ul>
+      </div>
+
+      <div class="notice-block">
+        <h2>まとめ</h2>
+        <p>スランプグラフは山と谷の形で展開を可視化したもの、差枚数は初当たりの早さだけでなくその後の連チャンの伸びで決まるもの、カタログ値とのズレはサンプルサイズと信頼区間を踏まえて解釈するもの。この3つの視点を持っておくと、各記事の実戦データをより正確に読み解けるようになります。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>関連ページ</h2>
+        <ul class="related-links">
+          <li><a href="glossary.html">用語集</a></li>
+          <li><a href="trust.html">データの信頼性について</a></li>
+          <li><a href="faq.html">よくある誤解Q&amp;A</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner container">
+    <p class="footer-notice">18歳未満の方のご利用はご遠慮ください。本サイトおよび関連するnote記事は、攻略法・必勝法の提供ではなく、実際にホールで記録した実データに基づく検証・傾向整理を目的としています。的中率・回収率を保証するものではありません。パチンコ・スロットには依存のリスクがあります。のめり込みが心配な方は、お住まいの都道府県・政令指定都市の精神保健福祉センターなど公的な相談窓口にご相談ください。運営者情報・特定商取引法に基づく表示は、note(note.com)上のホブゴブリンのプロフィールページをご確認ください。</p>
+    <div class="footer-links">
+      <a href="notice.html">コンプライアンス・注意事項の詳細</a>
+      <a href="glossary.html">用語集</a>
+      <a href="how-to-read.html">実戦データの読み方ガイド</a>
+      <a href="trust.html">データの信頼性について</a>
+      <a href="faq.html">よくある誤解Q&amp;A</a>
+      <a href="https://note.com/hobgoblin" target="_blank" rel="noopener">note(ホブゴブリン)のプロフィール</a>
+    </div>
+    <div class="footer-bottom">
+      &copy; ホブゴブリン
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

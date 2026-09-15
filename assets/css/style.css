@@ -515,6 +515,58 @@ img {
   color: var(--color-text);
 }
 
+.notice-block p + p {
+  margin-top: 12px;
+}
+
+.notice-block ul {
+  margin: 12px 0 0;
+  padding-left: 1.2em;
+  font-size: 0.92rem;
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.notice-block ul + p {
+  margin-top: 12px;
+}
+
+.notice-block ul li::marker {
+  color: var(--color-coral);
+}
+
+/* コンテンツページ末尾の「関連ページ」リンク一覧(用語集・データの信頼性・
+   読み方ガイド・よくある誤解Q&A の回遊用。notice-block内で使用) */
+.related-links {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.related-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-teal-dark);
+  font-weight: 700;
+  font-size: 0.94rem;
+  text-decoration: none;
+}
+
+.related-links a::after {
+  content: "→";
+}
+
+.related-links a:hover,
+.related-links a:focus-visible {
+  text-decoration: underline;
+}
+
 .back-link {
   display: inline-flex;
   align-items: center;

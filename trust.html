@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>データの信頼性について｜パチスロ実データ解析ラボ</title>
+<meta name="description" content="このサイトが扱う実戦データはどう記録し、どう検証しているか。生データ(CSV)の公開や、集計の偏りを避ける工夫など、検証姿勢を正直にまとめました。攻略法ではなく検証・傾向整理の場です。">
+<link rel="canonical" href="https://nattuuuzamiurai.github.io/slot-realdata-lab-site/trust.html">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="パチスロ実データ解析ラボ">
+<meta property="og:title" content="データの信頼性について｜パチスロ実データ解析ラボ">
+<meta property="og:description" content="このサイトが扱う実戦データはどう記録し、どう検証しているか。生データ(CSV)の公開や、集計の偏りを避ける工夫など、検証姿勢を正直にまとめました。攻略法ではなく検証・傾向整理の場です。">
+<meta property="og:url" content="https://nattuuuzamiurai.github.io/slot-realdata-lab-site/trust.html">
+<meta property="og:image" content="https://nattuuuzamiurai.github.io/slot-realdata-lab-site/assets/images/title-banner.png">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="データの信頼性について｜パチスロ実データ解析ラボ">
+<meta name="twitter:description" content="このサイトが扱う実戦データはどう記録し、どう検証しているか。生データ(CSV)の公開や、集計の偏りを避ける工夫など、検証姿勢を正直にまとめました。攻略法ではなく検証・傾向整理の場です。">
+<meta name="twitter:image" content="https://nattuuuzamiurai.github.io/slot-realdata-lab-site/assets/images/title-banner.png">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="notice-page">
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-emoji" aria-hidden="true">🌺</span>
+      <span class="brand-name">パチスロ実データ解析ラボ<small>SLOT REALDATA LAB</small></span>
+    </a>
+    <nav class="site-nav" aria-label="サイト内ナビゲーション">
+      <a href="index.html#articles">記事一覧</a>
+      <a href="glossary.html">用語集</a>
+      <a href="how-to-read.html">読み方ガイド</a>
+      <a href="trust.html">データの信頼性</a>
+      <a href="faq.html">よくある質問</a>
+      <a href="index.html#about">このサイトについて</a>
+      <a href="notice.html">注意事項</a>
+    </nav>
+  </div>
+  <div class="hero container">
+    <span class="hero-badge">データの信頼性</span>
+    <h1>データの信頼性について ― 実戦データの記録・検証への向き合い方</h1>
+  </div>
+  <svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#fdf6e6" d="M0,32 C240,60 480,4 720,20 C960,36 1200,58 1440,26 L1440,60 L0,60 Z"></path>
+  </svg>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container">
+      <a class="back-link" href="index.html">← トップページへ戻る</a>
+
+      <div class="notice-block">
+        <p>「個人が発信している実戦データなんて、本当に信用できるの?」——正直なところ、この疑問はもっともだと思います。パチンコ・パチスロの世界には、根拠の乏しい「攻略法」「必勝法」を謳う情報が数多く出回ってきました。実戦データを掲げていても、都合のいい部分だけを切り取って見せている場合もあります。読者の方がそうした情報と見分けがつきにくいと感じるのは、当然のことです。</p>
+        <p>このページでは、このサイトおよび関連する記事のデータが、どのように記録され、どのように検証されているかを、できるだけ具体的にお伝えします。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>実際にホールで記録した実戦データです</h2>
+        <p>このサイトで扱うデータは、実際にホールに足を運び、実機を前にして記録した実戦データです。シミュレーションによる生成データや、他サイトの数値をそのまま転記したものではありません。記録は人の手による集計を経ており、自動収集ツールで機械的にかき集めたものでもありません。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>生データ(CSV)を公開しています</h2>
+        <p>各記事で扱った検証には、元になった生データ(個人・店舗が特定できる情報を除いた形式)をあわせて公開しています。集計の過程をブラックボックスにせず、気になる箇所があれば読者の方ご自身の手元で検算していただけるようにするためです。「この数字、本当に合っているの?」と思ったときに、確かめる手段を用意しておくことが、データを扱う上での最低限の誠実さだと考えています。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>集計の「絞り込み」には注意を払っています</h2>
+        <p>実戦データの集計では、「一定回数以上ハマった台だけに絞って集計する」といった、条件をつけて対象を絞り込む形の分析を行うことがあります。こうした分析は便利な反面、絞り込みの基準そのものによって、比較する対象の集団(母集団)の性質が変わってしまうことがあります。たとえば、粘り続けた台だけを対象にすると、途中でやめた台の結果が集計から漏れてしまい、実態より良く(あるいは悪く)見える数字になってしまう可能性があります。</p>
+        <p>こうした偏りが入り込んでいないかは、集計方法を決める段階で確認するようにしています。具体的には、絞り込みの条件を変えても結論が大きく変わらないかを見比べる、対象になった件数(母数)がどう変化したかを数字として明記する、といった形で、読者の方にも判断材料が伝わるようにしています。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>あくまで検証・傾向整理であり、攻略法ではありません</h2>
+        <p>改めてお伝えしたいのですが、このサイトおよび関連記事は、攻略法・必勝法の紹介ではありません。実際に記録した実戦データをもとに、「よく言われている通説は、データではどう見えるか」を検証し、傾向を整理してお届けすることを目的としています。的中率・回収率を保証するものではなく、紹介している数字も、今後同じ傾向が続くことを約束するものではありません。</p>
+        <p>データを整理してお見せすることと、「勝てる」と保証することはまったく別のことだと考えています。このサイトが提供したいのは後者ではなく、判断材料としての正直な情報です。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>良い結果も、期待外れな結果も、そのままお伝えします</h2>
+        <p>通説がデータとよく一致することもあれば、思ったより違っていることもあります。都合のいい結果だけを選んで見せることはせず、期待に沿わない結果もそのままお伝えするようにしています。地味な積み重ねですが、それがこのサイトの検証姿勢の土台です。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>まとめ</h2>
+        <p>実際にホールで記録した実戦データであること、生データを公開し読者自身が検算できること、集計の偏りが起きていないか確認するプロセスを設けていること。この3点が、このサイトのデータを支えています。あくまで検証・傾向整理であり、攻略法・必勝法の提供ではないという位置づけも、あわせてご理解いただければと思います。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>関連ページ</h2>
+        <ul class="related-links">
+          <li><a href="how-to-read.html">実戦データの読み方ガイド</a></li>
+          <li><a href="glossary.html">用語集</a></li>
+          <li><a href="faq.html">よくある誤解Q&amp;A</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner container">
+    <p class="footer-notice">18歳未満の方のご利用はご遠慮ください。本サイトおよび関連するnote記事は、攻略法・必勝法の提供ではなく、実際にホールで記録した実データに基づく検証・傾向整理を目的としています。的中率・回収率を保証するものではありません。パチンコ・スロットには依存のリスクがあります。のめり込みが心配な方は、お住まいの都道府県・政令指定都市の精神保健福祉センターなど公的な相談窓口にご相談ください。運営者情報・特定商取引法に基づく表示は、note(note.com)上のホブゴブリンのプロフィールページをご確認ください。</p>
+    <div class="footer-links">
+      <a href="notice.html">コンプライアンス・注意事項の詳細</a>
+      <a href="glossary.html">用語集</a>
+      <a href="how-to-read.html">実戦データの読み方ガイド</a>
+      <a href="trust.html">データの信頼性について</a>
+      <a href="faq.html">よくある誤解Q&amp;A</a>
+      <a href="https://note.com/hobgoblin" target="_blank" rel="noopener">note(ホブゴブリン)のプロフィール</a>
+    </div>
+    <div class="footer-bottom">
+      &copy; ホブゴブリン
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

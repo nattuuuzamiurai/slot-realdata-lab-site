@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>パチスロ実戦データ用語集｜パチスロ実データ解析ラボ</title>
+<meta name="description" content="継続率・スルー回数・モード(高確/低確)・天井・ハマり・差枚数から、サンプルサイズや信頼区間まで、パチスロの実戦データを読み解くための基礎用語をやさしく解説します。カタログ値と実戦値がズレる理由もあわせて紹介。">
+<link rel="canonical" href="https://nattuuuzamiurai.github.io/slot-realdata-lab-site/glossary.html">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="パチスロ実データ解析ラボ">
+<meta property="og:title" content="パチスロ実戦データ用語集｜パチスロ実データ解析ラボ">
+<meta property="og:description" content="継続率・スルー回数・モード(高確/低確)・天井・ハマり・差枚数から、サンプルサイズや信頼区間まで、パチスロの実戦データを読み解くための基礎用語をやさしく解説します。カタログ値と実戦値がズレる理由もあわせて紹介。">
+<meta property="og:url" content="https://nattuuuzamiurai.github.io/slot-realdata-lab-site/glossary.html">
+<meta property="og:image" content="https://nattuuuzamiurai.github.io/slot-realdata-lab-site/assets/images/title-banner.png">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="パチスロ実戦データ用語集｜パチスロ実データ解析ラボ">
+<meta name="twitter:description" content="継続率・スルー回数・モード(高確/低確)・天井・ハマり・差枚数から、サンプルサイズや信頼区間まで、パチスロの実戦データを読み解くための基礎用語をやさしく解説します。カタログ値と実戦値がズレる理由もあわせて紹介。">
+<meta name="twitter:image" content="https://nattuuuzamiurai.github.io/slot-realdata-lab-site/assets/images/title-banner.png">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="notice-page">
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-emoji" aria-hidden="true">🌺</span>
+      <span class="brand-name">パチスロ実データ解析ラボ<small>SLOT REALDATA LAB</small></span>
+    </a>
+    <nav class="site-nav" aria-label="サイト内ナビゲーション">
+      <a href="index.html#articles">記事一覧</a>
+      <a href="glossary.html">用語集</a>
+      <a href="how-to-read.html">読み方ガイド</a>
+      <a href="trust.html">データの信頼性</a>
+      <a href="faq.html">よくある質問</a>
+      <a href="index.html#about">このサイトについて</a>
+      <a href="notice.html">注意事項</a>
+    </nav>
+  </div>
+  <div class="hero container">
+    <span class="hero-badge">用語集</span>
+    <h1>パチスロ実戦データ用語集 ― 継続率・スルー回数・モードなど、データを読むための基礎用語</h1>
+  </div>
+  <svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#fdf6e6" d="M0,32 C240,60 480,4 720,20 C960,36 1200,58 1440,26 L1440,60 L0,60 Z"></path>
+  </svg>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container">
+      <a class="back-link" href="index.html">← トップページへ戻る</a>
+
+      <div class="notice-block">
+        <p>このサイトでは「継続率」「スルー回数」「信頼区間」といった言葉が繰り返し出てきます。ここでは、それぞれの言葉の意味を初めての方にも分かる言葉でまとめました。あわせて、機種のカタログ値(理論値)と実際にホールで記録した数値(実戦値)がなぜズレるのかについても触れています。用語の意味を先に押さえておくと、各記事の検証内容がぐっと読みやすくなります。</p>
+        <p>※以下はいずれも一般的な傾向・考え方の説明であり、特定の機種・特定のデータの解析結果ではありません。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>【一般論】継続率</h2>
+        <p>「継続率」は、当たり(ボーナス)が連続して発生する状態(いわゆる連チャン)に入ったあと、次の当たりまで同じ状態が続く見込みを示す言葉です。機種の解析情報として「◯◯モードの継続率は◯%」という形で紹介されることがよくあります。</p>
+        <p>ただし、この数字はあくまで多くの試行を積み重ねた場合の目安であり、目の前の1回1回の結果を保証するものではありません。この点の詳しい考え方は、後述の「<a href="faq.html">よくある誤解Q&amp;A</a>」でも扱っています。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>【一般論】スルー回数</h2>
+        <p>「スルー」は、当たり(ボーナス)が単発で終わり、上位の状態(連チャンや天国など)に移行しないまま通常の状態に戻ることを指すことが多い言葉です。「スルー回数」は、こうした単発の当たりが何回続いたかを数えたものです。</p>
+        <p>なお、「スルー回数」の数え方(どの時点から数え始めるか、前日以前の記録も含めるかなど)は、情報源や記録方法によって細かい定義が異なる場合があります。データを比較するときは、同じ定義で数えられたものかどうかを確認する意識が大切です。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>【一般論】モード(高確/低確/天国など)</h2>
+        <p>多くのパチスロ機種には、プレイヤーからは直接見えない内部の「状態(モード)」があり、これによって当たりやすさが変わるとされています。当たりやすい状態を「高確」、当たりにくい状態を「低確」と呼ぶのが一般的で、機種によってはさらに細かく「天国」「チャンス」といった独自の名称で段階分けされていることもあります。</p>
+        <p>自分が座っている台が今どのモードにあるかは、多くの場合直接確認する手段がなく、当たりの間隔や挙動から推測するしかありません。この推測はあくまで確率的なもので、確実に言い当てられるものではない点には注意が必要です。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>【一般論】天井</h2>
+        <p>「天井」は、当たり(ボーナス)が発生しないまま一定のゲーム数(回転数)に達すると、優遇された状態に移行する、または当たりが確定するとされる仕組みのことです。多くの機種でスペック表に「◯◯◯G天井」という形で公開されています。</p>
+        <p>天井の具体的なゲーム数や仕組みは機種ごとに異なり、同じシリーズでも機種が変われば数値が変わることも珍しくありません。実際の挙動を確認したい場合は、その機種を対象にした検証情報にあたることをおすすめします。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>【一般論】ハマり</h2>
+        <p>「ハマり」は、当たり(ボーナス)がなかなか発生せず、ゲーム数(回転数)だけが積み重なっていく状態を指す言葉です。平均的な当たりの間隔と比べて、当たりまでの期間が長く伸びている状態と言い換えることもできます。</p>
+        <p>「何ゲーム以上をハマりと呼ぶか」に厳密な決まりはなく、感覚的に使われることも多い言葉です。データとして扱う場合は、具体的なゲーム数の分布(何ゲーム台にどれくらいの件数が集まっているか)で見たほうが実態をつかみやすくなります。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>【一般論】差枚数</h2>
+        <p>「差枚数」は、ある時点を基準にして、そこから増えた、または減ったメダル(コイン)の枚数を示す指標です。個々のプレイ結果を数字で比較するときの基本的なものさしになります。</p>
+        <p>差枚数は、当たりが発生した回数だけでなく、1回あたりの当たりでどれだけ獲得できたか、当たりがどれだけ連続したかなど、複数の要素の掛け合わせで決まります。「当たった回数が多い=差枚数も多い」と単純にはならない点は、押さえておきたいポイントです。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>【一般論】サンプルサイズ・信頼区間</h2>
+        <p>実戦データを扱ううえで欠かせないのが、この2つの考え方です。</p>
+        <p>「サンプルサイズ」は、集計の元になった記録の件数のことです。件数が少ないうちは、たまたま偏った結果が出ることが珍しくなく、件数が増えるほど、その機種・状態の実際の傾向に近づいていく性質があります。</p>
+        <p>「信頼区間」は、同じ条件でデータを取り直すことを何度も繰り返した場合に、本当の値がだいたいこのくらいの範囲に収まりそうだ、という振れ幅の目安です。サンプルサイズが小さいほど信頼区間は広くなり、「この数字はまだ振れ幅が大きい参考値だ」と判断する材料になります。</p>
+        <p>このサイトで数値を紹介する際は、可能な限りサンプルサイズと信頼区間をあわせて示すようにしています。数字の裏にある「どれくらい確からしい数字なのか」まで含めて読んでいただくためです。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>【一般論】カタログ値(理論値)と実戦値は、なぜズレるのか</h2>
+        <p>機種のスペック表やカタログに記載されている数値(理論値)と、実際にホールで記録した数値(実戦値)は、ぴったり一致しないことがよくあります。これは、次のような理由による自然な現象であることが多いです。</p>
+        <ul>
+          <li><strong>サンプルサイズの影響</strong>: 記録した件数が少ないうちは、偶然の偏りが数字に表れやすくなります。</li>
+          <li><strong>台差・設定差</strong>: 同じ機種でも、設定や個体差によって、実際の当たりやすさが変わることがあります。</li>
+          <li><strong>記録条件の違い</strong>: 記録した期間・台数・店舗・時間帯などの条件によって、集まるデータの性質が変わります。</li>
+          <li><strong>定義・集計方法の違い</strong>: 「スルー回数」や「ハマり」のように、情報源によって細かい定義が異なる指標では、同じ言葉でも数字がズレて見えることがあります。</li>
+        </ul>
+        <p>実戦値が理論値と違っていたからといって、それ自体が「何かおかしい」ことを意味するわけではありません。サンプルサイズが限られている以上、ある程度のズレが生じるのは自然なことです。大切なのは、そのズレが誤差の範囲内なのか、サンプルサイズを増やしても縮まらない傾向のズレなのかを、信頼区間などをもとに見極めることです。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>まとめ</h2>
+        <p>継続率・スルー回数・モードといった言葉は、実戦データを読み解くための共通言語です。あわせて、サンプルサイズと信頼区間という物差しを持っておくと、紹介されている数字が「どれくらい確からしいものか」まで判断できるようになります。各機種の詳しい検証は、それぞれの<a href="index.html#articles">実データ解析記事</a>でまとめています。</p>
+      </div>
+
+      <div class="notice-block">
+        <h2>関連ページ</h2>
+        <ul class="related-links">
+          <li><a href="trust.html">データの信頼性について</a></li>
+          <li><a href="how-to-read.html">実戦データの読み方ガイド</a></li>
+          <li><a href="faq.html">よくある誤解Q&amp;A</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner container">
+    <p class="footer-notice">18歳未満の方のご利用はご遠慮ください。本サイトおよび関連するnote記事は、攻略法・必勝法の提供ではなく、実際にホールで記録した実データに基づく検証・傾向整理を目的としています。的中率・回収率を保証するものではありません。パチンコ・スロットには依存のリスクがあります。のめり込みが心配な方は、お住まいの都道府県・政令指定都市の精神保健福祉センターなど公的な相談窓口にご相談ください。運営者情報・特定商取引法に基づく表示は、note(note.com)上のホブゴブリンのプロフィールページをご確認ください。</p>
+    <div class="footer-links">
+      <a href="notice.html">コンプライアンス・注意事項の詳細</a>
+      <a href="glossary.html">用語集</a>
+      <a href="how-to-read.html">実戦データの読み方ガイド</a>
+      <a href="trust.html">データの信頼性について</a>
+      <a href="faq.html">よくある誤解Q&amp;A</a>
+      <a href="https://note.com/hobgoblin" target="_blank" rel="noopener">note(ホブゴブリン)のプロフィール</a>
+    </div>
+    <div class="footer-bottom">
+      &copy; ホブゴブリン
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
