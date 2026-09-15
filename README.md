@@ -45,16 +45,14 @@ python3 -m http.server 8080
 
 - 公開方法: GitHub Actions(`.github/workflows/deploy.yml`)が `main` へのpushをトリガーに
   リポジトリ直下をそのままPagesアーティファクトとしてアップロード・デプロイする(ビルド手順なし)。
-- 公開URL(GitHub Pages・ドメイン未設定時): `https://nattuuuzamiurai.github.io/slot-realdata-lab-site/`
+- 独自ドメイン: `https://slotrealdata.com/`(取得・移行済み。リポジトリ直下の `CNAME` ファイルとGitHub Pages設定〔`cname`〕で紐付け)
+- 旧URL(GitHub Pages・ドメイン未設定時代): `https://nattuuuzamiurai.github.io/slot-realdata-lab-site/`(現在は使用していない)
 
-### 独自ドメイン移行時に更新が必要な箇所
+### 独自ドメイン移行の実施状況
 
-現在は `https://nattuuuzamiurai.github.io/slot-realdata-lab-site/` を前提に以下へURLを直書きしている。
-独自ドメインへ移行する際は、以下をまとめて置き換えること。
-
-- `index.html` / `notice.html` の `<link rel="canonical">`、`og:url`、`og:image`
-- `robots.txt` の `Sitemap:` 行
-- `sitemap.xml` の各 `<loc>`
+- `index.html` / `notice.html` / `glossary.html` / `how-to-read.html` / `trust.html` / `faq.html` の `<link rel="canonical">`、`og:url`、`og:image` を新ドメインに更新済み
+- `robots.txt` の `Sitemap:` 行、`sitemap.xml` の各 `<loc>` を新ドメインに更新済み
+- DNS設定(レジストラ側でのAレコード/CNAME設定)は別途完了が必要(運営者側の作業)
 
 ## ブランド・コンプライアンス制約
 
